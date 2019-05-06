@@ -60,7 +60,7 @@ import UIKit
     
     // MARK: Properties
     /// The selected index
-    public fileprivate(set) var index: UInt
+    @objc public fileprivate(set) var index: UInt
     /// The titles / options available for selection
     @objc public var titles: [String] {
         get {
