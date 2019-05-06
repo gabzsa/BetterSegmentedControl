@@ -62,7 +62,7 @@ import UIKit
     /// The selected index
     public fileprivate(set) var index: UInt
     /// The titles / options available for selection
-    public var titles: [String] {
+    @objc public var titles: [String] {
         get {
             let titleLabels = titleLabelsView.subviews as! [UILabel]
             return titleLabels.map { $0.text! }
@@ -116,7 +116,7 @@ import UIKit
     /// Whether the the control should ignore pan gestures. Defaults to false
     public var panningDisabled = false
     /// The control's and indicator's corner radii
-    @IBInspectable public var cornerRadius: CGFloat {
+    @objc @IBInspectable public var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -127,7 +127,7 @@ import UIKit
         }
     }
     /// The indicator view's background color
-    @IBInspectable public var indicatorViewBackgroundColor: UIColor? {
+    @objc @IBInspectable public var indicatorViewBackgroundColor: UIColor? {
         get {
             return indicatorView.backgroundColor
         }
@@ -136,11 +136,11 @@ import UIKit
         }
     }
     /// The indicator view's inset. Defaults to 2.0
-    @IBInspectable public var indicatorViewInset: CGFloat = 2.0 {
+    @objc @IBInspectable public var indicatorViewInset: CGFloat = 2.0 {
         didSet { setNeedsLayout() }
     }
     /// The indicator view's border width
-    public var indicatorViewBorderWidth: CGFloat {
+    @objc public var indicatorViewBorderWidth: CGFloat {
         get {
             return indicatorView.layer.borderWidth
         }
@@ -149,7 +149,7 @@ import UIKit
         }
     }
     /// The indicator view's border width
-    public var indicatorViewBorderColor: CGColor? {
+    @objc public var indicatorViewBorderColor: CGColor? {
         get {
             return indicatorView.layer.borderColor
         }
@@ -158,44 +158,44 @@ import UIKit
         }
     }
     /// The text color of the non-selected titles / options
-    @IBInspectable public var titleColor: UIColor  {
+    @objc @IBInspectable public var titleColor: UIColor  {
         didSet {
             titleLabels.forEach { $0.textColor = titleColor }
         }
     }
     /// The text color of the selected title / option
-    @IBInspectable public var selectedTitleColor: UIColor {
+    @objc @IBInspectable public var selectedTitleColor: UIColor {
         didSet {
             selectedTitleLabels.forEach { $0.textColor = selectedTitleColor }
         }
     }
     /// The titles' font
-    public var titleFont: UIFont = UILabel().font {
+    @objc public var titleFont: UIFont = UILabel().font {
         didSet {
             titleLabels.forEach { $0.font = titleFont }
         }
     }
     /// The selected title's font
-    public var selectedTitleFont: UIFont = UILabel().font {
+    @objc public var selectedTitleFont: UIFont = UILabel().font {
         didSet {
             selectedTitleLabels.forEach { $0.font = selectedTitleFont }
         }
     }
     /// The titles' border width
-    public var titleBorderWidth: CGFloat = 0.0 {
+    @objc public var titleBorderWidth: CGFloat = 0.0 {
         didSet {
             titleLabels.forEach { $0.layer.borderWidth = titleBorderWidth }
         }
     }
     /// The titles' number of lines
-    public var titleNumberOfLines: Int = 1 {
+    @objc public var titleNumberOfLines: Int = 1 {
         didSet {
             titleLabels.forEach { $0.numberOfLines = titleNumberOfLines }
             selectedTitleLabels.forEach { $0.numberOfLines = titleNumberOfLines }
         }
     }
     /// The titles' border color
-    public var titleBorderColor: CGColor = UIColor.clear.cgColor {
+    @objc public var titleBorderColor: CGColor = UIColor.clear.cgColor {
         didSet {
             titleLabels.forEach { $0.layer.borderColor = titleBorderColor }
         }
@@ -306,7 +306,7 @@ import UIKit
      
      - throws: An error of type IndexBeyondBounds(UInt) is thrown if an index beyond the available indices is passed.
      */
-    public func setIndex(_ index: UInt, animated: Bool = true) throws {
+    @objc public func setIndex(_ index: UInt, animated: Bool = true) throws {
         guard titleLabels.indices.contains(Int(index)) else {
             throw IndexError.indexBeyondBounds(index)
         }
@@ -324,7 +324,7 @@ import UIKit
      
      - note: The added view must be able to layout & size itself and will not be autoresized.
      */
-    public func addSubviewToIndicator(_ view: UIView) {
+    @objc public func addSubviewToIndicator(_ view: UIView) {
         indicatorView.addSubview(view)
     }
     
