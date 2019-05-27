@@ -338,7 +338,7 @@ import UIKit
                            delay: 0.0,
                            usingSpringWithDamping: bouncesOnChange ? Animation.springDamping : 1.0,
                            initialSpringVelocity: 0.0,
-                           options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut],
+                           options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseOut],
                            animations: {
                             () -> Void in
                             self.moveIndicatorView()
@@ -363,7 +363,7 @@ import UIKit
     }
     fileprivate func nearestIndex(toPoint point: CGPoint) -> UInt {
         let distances = titleLabels.map { abs(point.x - $0.center.x) }
-        return UInt(distances.index(of: distances.min()!)!)
+        return UInt(distances.firstIndex(of: distances.min()!)!)
     }
     fileprivate func moveIndicatorView() {
         indicatorView.frame = titleLabels[Int(self.index)].frame
